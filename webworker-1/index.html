@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web Worker</title>
+  </head>
+
+  <body>
+    <p>Web Worker is Counting Numbers</p>
+
+    <p>Counting: <output id="countM"></output></p>
+
+    <button onclick="alertMessage()">Alert On</button>
+    <button onclick="colorChange()">Background Colour Changes</button>
+
+    <script>
+      function alertMessage() {
+        alert("Web Worker is Running in Background");
+      }
+
+      function colorChange() {
+        // document.body.style.background = "yellow";
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+
+        document.body.style.background =
+          "rgb(" + red + ", " + green + ", " + blue + ")";
+      }
+
+      var worker = new Worker("webWorker.js");
+      worker.onmessage = function (event) {
+        document.getElementById("countM").innerHTML = event.data;
+      };
+    </script>
+  </body>
+</html>
