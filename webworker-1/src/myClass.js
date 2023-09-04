@@ -25,7 +25,7 @@ class MyClass extends React.Component {
   render() {
     return (
       <div>
-        myClass test
+        myClass
         <button onClick={this.handleClick}>Click to trigger worker</button>
       </div>
     );
